@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 //Banner Background
@@ -95,3 +96,5 @@ export const Bolder = styled.b`
     font-weight: 900;
     font-size: 18px;
 `;
+
+export default Container;
