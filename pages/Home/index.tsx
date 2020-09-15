@@ -99,7 +99,7 @@ function Home() {
                     Também desenvolvo com <Bolder>NojeJS</Bolder> para construir aplicações no back-end, ou seja no lado do servidor.
                     Enfim, caso queira entrar em contato, minhas redes sociais estão ai em cima e caso queira algo mais formal,
                     pode enviar um e-mail no seguinte endereço: <br />
-                    <Bolder>E-mail: lucasnascimentojob@gmail.com</Bolder>
+                    <Bolder>E-mail: joblucasnascimento@gmail.com</Bolder>
                 </p>
                 <h2 id="artigos"># Artigos</h2>
                 <Subtitle>Sem artigos no momento  :(</Subtitle>
