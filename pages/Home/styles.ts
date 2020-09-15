@@ -47,7 +47,7 @@ export const Background = styled.div`
 
 export const BoxTitle = styled.div`
     text-align: center;
-    color: ${(props: PropsBoxTitle) => props.background || "#fff"};
+    color: #fff;
     padding: 3px;
     margin-left: 100px;
     transition: ${Constants.TIME_TRANSITION}s;
@@ -89,4 +89,9 @@ export const Profile = styled.img`
     height: 280px;
     border-radius: 100%;
     transition: ${Constants.TIME_TRANSITION}s;
+`;
+
+export const Bolder = styled.b`
+    font-weight: 900;
+    font-size: 18px;
 `;
