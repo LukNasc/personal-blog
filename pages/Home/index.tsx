@@ -13,7 +13,8 @@ import {
     ContentTitle,
     Profile,
     Subtitle,
-    Title
+    Title,
+    Bolder
 } from './styles'
 
 //Imagem de perfil
@@ -47,15 +48,15 @@ function Home() {
             const content = document.querySelector(".content");
 
             //Lógica para diminuir e aumentar banner, junto com os elementos filhos
-            if(window.pageYOffset){
+            if (window.pageYOffset) {
                 //Caso o usuário role a página para baixo
                 element.setAttribute("style", `display:flex;height:90px;position:fixed;top:0;justify-content:center;align-itens:center`)
                 profile.setAttribute("style", "height: 80px; width: 80px;");
                 socialButtons.setAttribute("style", "bottom: 0");
-                subtitle.setAttribute("style","visibility: hidden;");
-                title.setAttribute("style","font-size: 40px;");
+                subtitle.setAttribute("style", "visibility: hidden;");
+                title.setAttribute("style", "font-size: 40px;");
                 content.setAttribute("style", "padding-top: 150px");
-            }else {
+            } else {
                 //Caso o usuário esteja no topo da página
                 element.removeAttribute("style");
                 profile.removeAttribute("style");
@@ -78,7 +79,7 @@ function Home() {
                 </Background>
                 <SocialButtons className="social-buttons"></SocialButtons>
                 <ContentTitle>
-                    <Profile src={profile} className="profile"/>
+                    <Profile src={profile} className="profile" />
                     <BoxTitle>
                         <Title className="title">{title}</Title>
                         <Subtitle className="subtitle">Desenvolvedor Mobile / FullStack</Subtitle>
@@ -88,47 +89,47 @@ function Home() {
             <Content className="content">
                 <h2 id="sobre"># Sobre</h2>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a viverra ligula. Duis pretium pulvinar enim, vel pellentesque odio. Pellentesque ac ornare enim. Morbi a dolor laoreet, porttitor leo sit amet, aliquam lectus. Donec et commodo libero. Nam euismod non nunc quis rutrum. Vivamus sed malesuada velit, et consequat nisl. Donec et odio non lorem fringilla varius. Quisque venenatis sem et tincidunt ornare. Ut tempor commodo porttitor. Aenean at auctor metus. Duis blandit mauris dolor, a tempor mi pharetra id. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed sed lectus sit amet nibh posuere molestie.
-                    Sed ullamcorper nulla sit amet vestibulum sodales. Suspendisse id leo non nisl pretium dapibus. Donec sagittis dictum turpis vitae rutrum. Mauris pulvinar turpis orci, sit amet blandit arcu commodo id. Mauris nec libero in sapien tincidunt ornare. Cras vitae scelerisque ex. Maecenas elementum, sapien sed rhoncus dictum, nibh magna fringilla ligula, ut aliquet ipsum tellus a massa. Curabitur vel vehicula nisi, quis eleifend quam. Phasellus ullamcorper, orci id congue fermentum, arcu velit mollis ligula, ut imperdiet sem velit ac nulla. Nullam at cursus neque.
+                    Olá tudo bem ? acho que ja deve ter visto logo de inicio mas me chamo Lucas Nascimento,
+                    tenho 19 anos e sou estudante de <Bolder>Sistemas de Informação</Bolder> no Centro Universitário Estácio em Fortaleza/CE.
+                    Apesar de estudar, trabalhar e fazer quase tudo em Fortaleza, não é exatamente essa a cidade em que eu moro,
+                    eu moro na região metropolitana de Fortaleza em uma cidade chamada Caucaia.
+                    Pois bem, sou <Bolder>desenvolvedor Mobile e Web</Bolder>, desenvolvo aplicativos nativos para <Bolder>Android </Bolder>
+                    e também desenvolvo apps com <Bolder>React Native</Bolder>,
+                    que é uma tecnologia bem parecida com a que eu uso no desenvolvimento web front-end o <Bolder>ReactJS</Bolder>.
+                    Também desenvolvo com <Bolder>NojeJS</Bolder> para construir aplicações no back-end, ou seja no lado do servidor.
+                    Enfim, caso queira entrar em contato, minhas redes sociais estão ai em cima e caso queira algo mais formal,
+                    pode enviar um e-mail no seguinte endereço: <br />
+                    <Bolder>E-mail: lucasnascimentojob@gmail.com</Bolder>
                 </p>
                 <h2 id="artigos"># Artigos</h2>
-                <ul>
-                    <li>
-                        <a href="#">Titulo</a>
-                        <p>
-                            Descrição do artigo
-                        </p>
-                    </li>
-                    <li>
-                        <a href="#">Titulo</a>
-                        <p>
-                            Descrição do artigo
-                        </p>
-                    </li>
-                    <li>
-                        <a href="#">Titulo</a>
-                        <p>
-                            Descrição do artigo
-                        </p>
-                    </li>
-                    <li>
-                        <a href="#">Titulo</a>
-                        <p>
-                            Descrição do artigo
-                        </p>
-                    </li>
-                    <li>
-                        <a href="#">Titulo</a>
-                        <p>
-                            Descrição do artigo
-                        </p>
-                    </li>
-                </ul>
+                <Subtitle>Sem artigos no momento  :(</Subtitle>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br /> 
+                <br />
+                <br />  
+                <br />
+                <br />  
+                <br />      
+                <br />      
+                <br />      
+                <br />      
+                <br />      
+                <br />      
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
                 <h2 id="projetos"># Projetos</h2>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a viverra ligula. Duis pretium pulvinar enim, vel pellentesque odio. Pellentesque ac ornare enim. Morbi a dolor laoreet, porttitor leo sit amet, aliquam lectus. Donec et commodo libero. Nam euismod non nunc quis rutrum. Vivamus sed malesuada velit, et consequat nisl. Donec et odio non lorem fringilla varius. Quisque venenatis sem et tincidunt ornare. Ut tempor commodo porttitor. Aenean at auctor metus. Duis blandit mauris dolor, a tempor mi pharetra id. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed sed lectus sit amet nibh posuere molestie.
-                    Sed ullamcorper nulla sit amet vestibulum sodales. Suspendisse id leo non nisl pretium dapibus. Donec sagittis dictum turpis vitae rutrum. Mauris pulvinar turpis orci, sit amet blandit arcu commodo id. Mauris nec libero in sapien tincidunt ornare. Cras vitae scelerisque ex. Maecenas elementum, sapien sed rhoncus dictum, nibh magna fringilla ligula, ut aliquet ipsum tellus a massa. Curabitur vel vehicula nisi, quis eleifend quam. Phasellus ullamcorper, orci id congue fermentum, arcu velit mollis ligula, ut imperdiet sem velit ac nulla. Nullam at cursus neque.
-                </p>
+               <Subtitle>Sem projetos no momento :(</Subtitle>
             </Content>
         </Container>
     )
