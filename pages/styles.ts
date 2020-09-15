@@ -8,3 +8,5 @@ export const GlobalStyle = createGlobalStyle`
         font-family: 'Inconsolata', monospace;
     }
 `;
+
+export default GlobalStyle;
