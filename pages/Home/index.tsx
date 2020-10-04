@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { NextPage } from 'next';
+import App from 'next/app'
+//Models
+import ArticlesModel from '../../models/articles'
 
 //Components
 import SocialButtons from '../../components/SocialButtons'
+
+import Api from '../../server';
+import 'isomorphic-fetch';
 
 //Styled-components
 import {
@@ -19,55 +26,64 @@ import {
 
 //Imagem de perfil
 import profile from '../../assets/profile.png'
+import List from '../../components/List';
 
-function Home() {
+interface Props {
+    articles: String
+}
+
+const Home = () => {
     const [title, setTitle] = useState("Lucas Nascimento");
+    const [articles, setArticles] = useState([]);
 
     /***
      * Método para verificar se tal elemento está visível na página
      *  */
-    function isVisibleInViewport(element: Element) {
-        const rect = element.getBoundingClientRect();
-        return (
-            rect.top >= 0 &&
-            rect.left >= 0 &&
-            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-        )
+    useEffect(() => {
+        callServiceArticles()
+    }, [])
+
+    async function callServiceArticles() {
+        try {
+            const { data } = await Api.get("/articles/list");
+            setArticles(data)
+        } catch (e) {
+            console.log('Ocorreu um erro ao tentar recuperar os artigos.', e);
+        }
     }
 
     useEffect(() => {
-        window.addEventListener('scroll', () => {
+        // window.addEventListener('scroll', () => {
 
-            //Pegando referencia dos elementos
-            const element = document.querySelector(".banner");
-            const profile = document.querySelector(".profile");
-            const socialButtons = document.querySelector(".social-buttons");
-            const subtitle = document.querySelector(".subtitle");
-            const title = document.querySelector(".title");
-            const content = document.querySelector(".content");
+        //     //Pegando referencia dos elementos
+        //     const element = document.querySelector(".banner");
+        //     const profile = document.querySelector(".profile");
+        //     const socialButtons = document.querySelector(".social-buttons");
+        //     const subtitle = document.querySelector(".subtitle");
+        //     const title = document.querySelector(".title");
+        //     const content = document.querySelector(".content");
 
-            //Lógica para diminuir e aumentar banner, junto com os elementos filhos
-            if (window.pageYOffset) {
-                //Caso o usuário role a página para baixo
-                element.setAttribute("style", `display:flex;height:90px;position:fixed;top:0;justify-content:center;align-itens:center`)
-                profile.setAttribute("style", "height: 80px; width: 80px;");
-                socialButtons.setAttribute("style", "bottom: 0");
-                subtitle.setAttribute("style", "visibility: hidden;");
-                title.setAttribute("style", "font-size: 40px;");
-                content.setAttribute("style", "padding-top: 150px");
-            } else {
-                //Caso o usuário esteja no topo da página
-                element.removeAttribute("style");
-                profile.removeAttribute("style");
-                socialButtons.removeAttribute("style");
-                subtitle.removeAttribute("style");
-                title.removeAttribute("style");
-                content.removeAttribute("style");
+        //     //Lógica para diminuir e aumentar banner, junto com os elementos filhos
+        //     if (window.pageYOffset) {
+        //         //Caso o usuário role a página para baixo
+        //         element.setAttribute("style", `display:flex;height:90px;position:fixed;top:0;justify-content:center;align-itens:center`)
+        //         profile.setAttribute("style", "height: 80px; width: 80px;");
+        //         socialButtons.setAttribute("style", "bottom: 0");
+        //         subtitle.setAttribute("style", "visibility: hidden;");
+        //         title.setAttribute("style", "font-size: 40px;");
+        //         content.setAttribute("style", "padding-top: 150px");
+        //     } else {
+        //         //Caso o usuário esteja no topo da página
+        //         element.removeAttribute("style");
+        //         profile.removeAttribute("style");
+        //         socialButtons.removeAttribute("style");
+        //         subtitle.removeAttribute("style");
+        //         title.removeAttribute("style");
+        //         content.removeAttribute("style");
 
 
-            }
-        });
+        //     }
+        // });
 
     }, []);
 
@@ -102,37 +118,11 @@ function Home() {
                     <Bolder>E-mail: joblucasnascimento@gmail.com</Bolder>
                 </p>
                 <h2 id="artigos"># Artigos</h2>
-                <Subtitle>Sem artigos no momento  :(</Subtitle>
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br /> 
-                <br />
-                <br />  
-                <br />
-                <br />  
-                <br />      
-                <br />      
-                <br />      
-                <br />      
-                <br />      
-                <br />      
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
+                <List />
                 <h2 id="projetos"># Projetos</h2>
-               <Subtitle>Sem projetos no momento :(</Subtitle>
+                <Subtitle>Sem projetos no momento :(</Subtitle>
             </Content>
         </Container>
     )
 }
-
 export default Home;

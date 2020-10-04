@@ -7,7 +7,7 @@ import Home from './Home'
 //Styles
 import { GlobalStyle } from './styles'
 
-export default function Main() {
+function Main() {
   return (
     <div className="container">
       <Head>
@@ -19,3 +19,6 @@ export default function Main() {
     </div>
   )
 }
+
+
+export default Main;
