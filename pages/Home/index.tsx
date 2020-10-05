@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { GetStaticProps } from 'next'
 
 //Components
 import SocialButtons from '../../components/SocialButtons'
@@ -19,24 +20,26 @@ import {
 
 //Imagem de perfil
 import profile from '../../assets/profile.png'
+import Link from 'next/link';
 
-function Home() {
-    const [title, setTitle] = useState("Lucas Nascimento");
+interface Articles {
+    _id: string,
+    user: string,
+    title: string,
+    content: string,
+    date: string
+}
+interface Props {
+    posts: Array<Articles>
+}
 
-    /***
-     * Método para verificar se tal elemento está visível na página
-     *  */
-    function isVisibleInViewport(element: Element) {
-        const rect = element.getBoundingClientRect();
-        return (
-            rect.top >= 0 &&
-            rect.left >= 0 &&
-            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-        )
-    }
+export default function Home({ posts }: Props) {
 
     useEffect(() => {
+        // addEventListenerScroll()
+    });
+
+    function addEventListenerScroll() {
         window.addEventListener('scroll', () => {
 
             //Pegando referencia dos elementos
@@ -68,8 +71,7 @@ function Home() {
 
             }
         });
-
-    }, []);
+    }
 
     return (
         <Container>
@@ -81,7 +83,7 @@ function Home() {
                 <ContentTitle>
                     <Profile src={profile} className="profile" />
                     <BoxTitle>
-                        <Title className="title">{title}</Title>
+                        <Title className="title">Lucas Nascimento</Title>
                         <Subtitle className="subtitle">Desenvolvedor Mobile / FullStack</Subtitle>
                     </BoxTitle>
                 </ContentTitle>
@@ -102,37 +104,17 @@ function Home() {
                     <Bolder>E-mail: joblucasnascimento@gmail.com</Bolder>
                 </p>
                 <h2 id="artigos"># Artigos</h2>
-                <Subtitle>Sem artigos no momento  :(</Subtitle>
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br /> 
-                <br />
-                <br />  
-                <br />
-                <br />  
-                <br />      
-                <br />      
-                <br />      
-                <br />      
-                <br />      
-                <br />      
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
+                {
+                    posts ? (
+                        posts.map(item => <Link key={item._id} href={`/Articles/${item._id}`}><h3># {item.title}</h3></Link>)
+                    ) : (
+                            <Subtitle>Sem artigos no momento  :(</Subtitle>
+                        )
+
+                }
                 <h2 id="projetos"># Projetos</h2>
-               <Subtitle>Sem projetos no momento :(</Subtitle>
+                <Subtitle>Sem projetos no momento :(</Subtitle>
             </Content>
         </Container>
     )
 }
-
-export default Home;
