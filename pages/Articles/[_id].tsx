@@ -28,7 +28,7 @@ export default function Article({ data }: Props) {
 
     return (
         <Container>
-            <Link href="../Home" >Voltar</Link>
+            <a href="../Home" >Voltar</a>
             <Content>
                 <H1>{data.title}</H1>
             </Content>
