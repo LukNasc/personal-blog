@@ -1,5 +1,7 @@
+import { GetStaticProps } from 'next'
 import Head from 'next/head'
 
+import Constants from '../util/Constants'
 
 //Paginas
 import Home from './Home'
@@ -7,7 +9,7 @@ import Home from './Home'
 //Styles
 import { GlobalStyle } from './styles'
 
-function Main() {
+export default function Main({ posts }) {
   return (
     <div className="container">
       <Head>
@@ -15,10 +17,17 @@ function Main() {
         <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;900&display=swap" rel="stylesheet"></link>
       </Head>
       <GlobalStyle />
-      <Home />
+      <Home posts={posts} />
     </div>
   )
 }
 
-
-export default Main;
+export const getStaticProps: GetStaticProps = async () => {
+  const response = await fetch(`${Constants.API.base_url}/articles/list`);
+  return {
+    props: {
+      posts: await response.json()
+    },
+    revalidate: 10
+  }
+}
