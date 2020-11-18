@@ -1,6 +1,4 @@
 import React, { useEffect } from 'react';
-import { GetStaticProps } from 'next'
-
 //Components
 import SocialButtons from '../../components/SocialButtons'
 
