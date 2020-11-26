@@ -1,13 +1,13 @@
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
 
-import Constants from '../util/Constants'
+import Constants from '../src/util/Constants'
 
 //Paginas
 import Home from './Home'
 
 //Styles
-import { GlobalStyle } from './styles'
+import { GlobalStyle } from '../src/styles/globals'
 
 export default function Main({ posts }) {
   return (

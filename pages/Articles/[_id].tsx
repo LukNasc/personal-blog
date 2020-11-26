@@ -5,8 +5,8 @@ import Link from 'next/link'
 import { GetStaticPaths, GetStaticProps } from 'next'
 
 
-import Constants from '../../util/Constants'
-import { Container, Content, H1 } from './style'
+import Constants from '../../src/util/Constants'
+import { Container, Content, H1 } from '../../src/styles/pages/articles'
 
 
 interface Props {
