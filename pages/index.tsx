@@ -14,7 +14,7 @@ export default function Main({ posts }) {
     <div className="container">
       <Head>
         <title>Lucas Nascimento</title>
-        <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;900&display=swap" rel="stylesheet"></link>
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;900&display=swap" rel="stylesheet"></link>
       </Head>
       <GlobalStyle />
       <Home posts={posts} />
