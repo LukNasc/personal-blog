@@ -4,7 +4,7 @@ export enum Direction {
     ROW = 'row',
     ROW_REVERSE = 'row-reverse',
     COLUMN = 'column',
-    COLUMN_REVERSE = 'column-reverse'
+    COLUMN_REVERSE = 'column-reverse',
 }
 
 interface IProps {
@@ -13,7 +13,7 @@ interface IProps {
 
 const Content = styled.div<IProps>`
     display: flex;
-    flex-direction: ${props => props.direction || 'column'};
+    flex-direction: ${props => props.direction || 'initial'};
     width: 90%;
     padding: 10px;
     transition: 0.1s;
@@ -35,7 +35,12 @@ const Content = styled.div<IProps>`
             width: inherit;
             height: inherit;
             border-radius: 10px;
+            object-fit: cover;
         }
+    }
+
+    div{
+        margin: 0 auto;
     }
 
     &:nth-child(n){

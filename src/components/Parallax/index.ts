@@ -21,6 +21,15 @@ export const Parallax = styled.div<IProps>`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
+  position: relative;
+  cite{
+    position: absolute;
+    right: 2px;
+    bottom:0;
+    background:rgba(0,0,0,0.5);
+    padding: 5px;
+    border-radius: 10px 10px 0 0;
+    color: #fff;
+  }
 
 `

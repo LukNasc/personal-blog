@@ -2,30 +2,26 @@ import React, { useEffect } from 'react';
 //Components
 import SocialButtons from '../../src/components/SocialButtons'
 
-import Api from '../../src/server';
-
 //Styled-components
 import {
-    BoxTitle,
     Container,
-    ContentTitle,
     Profile,
     Subtitle,
     Title,
-    Bolder
 } from '../../src/styles/pages/home'
 
-import Link from 'next/link';
 import { Parallax } from '../../src/components/Parallax';
 import Content, { Direction } from '../../src/components/Content'
-import List from '../../src/components/List';
-import ListModel from '../../models/list';
+import { BoxArticles, ItemArticles } from '../../src/components/ItemArticles';
+import { BoxProjects, ItemProject } from '../../src/components/ItemProjects';
 interface Articles {
-    _id: string,
-    user: string,
+    _id?: string,
+    user?: string,
     title: string,
-    content: string,
-    date: string
+    content?: string,
+    date?: string,
+    description: string,
+    image: string,
 }
 interface Props {
     posts: Array<Articles>
@@ -33,25 +29,55 @@ interface Props {
 
 export default function Home({ posts }: Props) {
 
+    const posts_teste: Array<Articles> = [
+        {
+            title: "Desenvolvimento híbrido ou nativo?...",
+            description: "Olá pessoas, esse é meu primeiro artigo e eu queria conversar um pouco e expor minha opinião sobre aplicativos híbridos (de código único) ou nativo.",
+            image: "https://miro.medium.com/max/480/1*NN9IFj8v5objxGBY72xcIg.gif"
+        },
+        {
+            title: "Temas dinâmicos com React...",
+            description: "Olá senhores, voltei aqui mais uma vez, dessa vez pra falar com vocês um pouco sobre os temas no React.",
+            image: "https://miro.medium.com/max/349/1*ITQVgSSUuNEF2Fl9xMBp8A.gif"
+        }
+    ]
+
+    const projects = [{
+        title: "Whatsapp Clone",
+        description: "Um clone do aplicativo de mensagens mais famoso do mundo, desenvolvido com Java na IDE do Android Studio, com integração ao Realtime Database da ferramenta Firebase do Google",
+        image: "https://arc-anglerfish-eu-central-1-prod-prisa.s3.amazonaws.com/public/VASJ5OBPXGE2JGCB5S2VMQGWYM.jpg"
+    }, {
+        title: "Nubank Clone",
+        description: "Um clone da interface de um dos bancos mais populares do momento, desenvolvido com React Native + Styled Components e outras libs",
+        image: "https://contxto.com/wp-content/uploads/2019/09/Nubank_pre-paid_recharges-1200x1005.jpg"
+    }, {
+        title: "Uber Clone",
+        description: "Um clone da interface do aplicativo de mobilidade urbana, o famoso Uber, Desenvolvido com React Native + Styled Components em integração com a API do Google Maps",
+        image: "https://oestadoonline.com.br/wp-content/uploads/2020/02/motorista-uber.jpg"
+    }, {
+        title: "Organizze Clone",
+        description: "Um clone de um ótimo aplicativo de organização financeira, foi desenvolvido com Java na IDE do Android Studio com integração ao Realtime Database da ferramenta Firebase do Google",
+        image: "https://barkus.com.br/site/wp-content/uploads/2018/06/image2-1-1024x768.jpg"
+    }]
+
     useEffect(() => {
         // addEventListenerScroll()
     });
 
-    const art: Array<ListModel> = [{
-        title:"teste",
-        description: "Description teste",
-    }]
-
     return (
         <Container>
-            <Parallax background="/static/assets/background.png">
+            <Parallax background="/static/assets/background_main.jpg">
+                <SocialButtons />
                 <Profile src="/static/assets/profile.jpeg" />
                 <Title>Lucas Nascimento</Title>
                 <Subtitle>Mobile / Web Developer</Subtitle>
+                <cite>
+                    <span>Photo by <a href="https://unsplash.com/@cammarb?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Camila Martinez</a> on <a href="https://unsplash.com/s/photos/developer?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+                </cite>
             </Parallax>
             <Content direction={Direction.ROW}>
                 <div className="content--image">
-                    <img src="https://pplware.sapo.pt/wp-content/uploads/2017/03/sftp_00.jpg" alt="" />
+                    <img src="/static/assets/hello.gif" alt="" />
                 </div>
                 <p>
                     Olá tudo bem ? acho que ja deve ter visto logo de inicio mas me chamo Lucas Nascimento,
@@ -66,23 +92,60 @@ export default function Home({ posts }: Props) {
                     pode enviar um e-mail no seguinte endereço: <br />
                     <span>E-mail: joblucasnascimento@gmail.com</span>
                 </p>
-                {/* <h2 id="artigos"># Artigos</h2>
-                {
-                    posts ? (
-                        posts.map(item => <Link key={item._id} href={`/Articles/${item._id}`}><h3># {item.title}</h3></Link>)
-                    ) : (
-                            <Subtitle>Sem artigos no momento  :(</Subtitle>
-                        )
-
-                }
-                <h2 id="projetos"># Projetos</h2>
-                <Subtitle>Sem projetos no momento :(</Subtitle> */}
             </Content>
-            <Parallax background="https://png.pngtree.com/thumb_back/fh260/back_our/20190619/ourmid/pngtree-tech-background-image-of-desktop-notebook-and-computer-image_133044.jpg">
+            <Parallax background="/static/assets/background-projects.jpg">
                 <Title>Artigos / Posts</Title>
+                <cite>
+                    <span>Photo by <a href="https://unsplash.com/@arianismmm?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Arian Darvishi</a> on <a href="https://unsplash.com/s/photos/developer?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+                </cite>
             </Parallax>
-            <Content>
-                <List articles={art} />
+            <Content direction={Direction.ROW}>
+                <div >
+
+                    {
+                        posts_teste ? (
+                            posts_teste.map(item => (
+                                <ItemArticles background={item.image}>
+                                    <BoxArticles>
+                                        <h1>{item.title}</h1>
+                                        <p>
+                                            {item.description}
+                                        </p>
+                                    </BoxArticles>
+                                </ItemArticles>
+                            ))
+                        ) : (
+                                <Subtitle>Sem artigos no momento  :(</Subtitle>
+                            )
+                    }
+                </div>
+            </Content>
+            <Parallax background="/static/assets/background-pj.jpg">
+                <Title>Projetos</Title>
+                <cite>
+                    <span>Photo by <a href="https://unsplash.com/@jefflssantos?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jefferson Santos</a> on <a href="https://unsplash.com/s/photos/developer?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+                </cite>
+            </Parallax>
+            <Content >
+                <div>
+                    {
+                        projects.map((item, index) => {
+                            if (index <= 3) {
+                                return (
+                                    <ItemProject background={item.image}>
+                                        <BoxProjects>
+                                            <h1>{item.title}</h1>
+                                            <p>
+                                                {item.description}
+                                            </p>
+                                        </BoxProjects>
+                                    </ItemProject>
+                                )
+                            }
+
+                        })
+                    }
+                </div>
             </Content>
         </Container>
     )
